@@ -34,7 +34,7 @@ $.get(github_api + gist_api + gist, function (data) {
         var encryptedData = hex2bytearray(encodedData);
         var aesCbc = new aesjs.ModeOfOperation.cbc(key, iv);
         var decryptedData = aesCbc.decrypt(encryptedData);
-        var decryptedText = aesjs.util.convertBytesToString(decryptedData);
+        var decryptedText = aesjs.utils.utf8.fromBytes(decryptedData);
         $("#note").html(decryptedText);
     }
 });
